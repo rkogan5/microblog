@@ -1,7 +1,9 @@
+import os
+from dotenv import load_dotenv
 from app import create_app, db, cli
 from app.models import User, Post, Message, Notification, Task
 
-app = create_app()
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 cli.register(app)
 
 
